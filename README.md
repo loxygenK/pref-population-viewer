@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# pref-population-viewer
 
-## Getting Started
+都道府県ごとの人口構成の推移をグラフで表示するアプリケーション．
 
-First, run the development server:
+## 環境
 
+### パッケージマネージャについて
+パッケージマネージャに [pnpm](https://pnpm.io/ja/) を使っています．
+
+### コミットメッセージの形式について
+コミットメッセージは [Conventional Commits](https://www.conventionalcommits.org/ja) を使っています．
+
+### 開発の準備
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/loxygenK/pref-population-viewer
+cd pref-population-viewer
+pnpm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Scripts
+この表に書かれているもの以外のスクリプトは，[`package.json`](https://github.com/loxygenK/pref-population-viewer/tree/main/package.json) に記述されています．
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+| Scripts     | 内容                                         |
+| :---------- | :------------------------------------------- |
+| `dev`       | 開発用サーバを起動する．                     |
+| `start`     | プロダクションモードでサーバを起動する．     |
+| `build`     | プロダクションビルドを作成する.              |
+| `test`      | ヘッドレスで E2E テストを実行する．          |
+| `test:head` | GUI を起動して E2E テストを実行する．        |
+| `lint`      | ESLint + Prettier の lint を実行する．       |
+| `fix`       | `pnpm lint` で出た修正可能な問題を修正する． |
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### フック
+#### `pnpm i` 後など (`prepare`)
+- `husky init` ... コミットフックが設定されます．
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### checkout 後
+- `pnpm i` ... ブランチ内の `package.json` と `pnpm-lock.yaml` に基づいてパッケージをインストールします．
 
-## Learn More
+#### コミット前
+- `lint-staged` ... ステージされた変更に対して `pnpm fix` (と同等の処理) を実行します．ファイルの内容が変わるかもしれません．
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 開発の流れ
+1. `git checkout main` (必要に応じて)
+2. `git pull origin main` (必要に応じて)
+3. `git checkout -b <ブランチ名>`
+4. (必要な変更をする)
+5. `git commit -m "..."`
+   - このときにコミットフックが実行され，ファイルが変更される可能性があります．
+6. `git push origin <ブランチ名>`
+7. Pull requests を作成する
+8. CI が全て通過するのを待ち，Squash merge
+   - base ブランチは自動的に削除されます．
