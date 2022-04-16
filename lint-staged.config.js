@@ -12,5 +12,8 @@ module.exports = {
   "./src/**/*.{ts,tsx}": [
     nextLintCommand,
     "prettier -cw"
-  ]
+  ],
+  "./cypress/integration/**/*.{ts,tsx}": [
+    "prettier -cw"
+  ],
 }
