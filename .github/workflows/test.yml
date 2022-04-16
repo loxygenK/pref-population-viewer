@@ -25,7 +25,9 @@ jobs:
           version: 6.32
           run_install: true
 
-      - run: pnpm test
+      - uses: cypress-io/github-action@v2
+        with:
+          start: pnpm dev
 
       - uses: actions/upload-artifact@v3
         if: failure()
