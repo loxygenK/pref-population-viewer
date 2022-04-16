@@ -27,7 +27,10 @@ jobs:
 
       - uses: cypress-io/github-action@v2
         with:
+          install: false
+          command: pnpm test
           start: pnpm dev
+          wait-on: http://localhost:3000/
 
       - uses: actions/upload-artifact@v3
         if: failure()
