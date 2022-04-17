@@ -4,10 +4,11 @@ const createJestConfig = nextJest({ dir: "./" });
 
 module.exports = createJestConfig({
   testEnvironment: "jest-environment-jsdom",
-  "roots": [
+  roots: [
     "<rootDir>/src"
   ],
-  "moduleNameMapper": {
+  moduleNameMapper: {
     "^~/(.*)$": "<rootDir>/src/$1"
-  }
+  },
+  globalSetup: "<rootDir>/src/test/setup.ts"
 });
