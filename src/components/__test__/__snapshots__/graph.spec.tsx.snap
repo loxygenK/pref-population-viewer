@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders correctly 1`] = `
+<div
+  className="graph"
+>
+  <canvas
+    height={150}
+    role="img"
+    width={300}
+  />
+</div>
+`;
