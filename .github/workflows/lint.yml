@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fall-fast: false
+      fail-fast: false
       matrix:
         command: ["lint:eslint", "lint:prettier", "test"]
 
