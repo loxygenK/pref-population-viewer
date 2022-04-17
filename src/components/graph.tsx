@@ -4,6 +4,8 @@ import { Chart } from "react-chartjs-2";
 import { generateColor } from "~/util/generateColor";
 import { UnitShowerPlugin } from "./graph/unitShowerPlugin";
 
+import styles from "./graph.module.scss";
+
 export const Graph: React.FC = () => {
   const data: ChartData<"line"> = {
     labels: ["1", "2", "3"],
@@ -16,9 +18,7 @@ export const Graph: React.FC = () => {
   };
 
   const options: ChartOptions<"line"> = {
-    layout: {
-      padding: 30,
-    },
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         align: "start",
@@ -37,14 +37,16 @@ export const Graph: React.FC = () => {
   };
 
   return (
-    <Chart
-      type="line"
-      data={data}
-      options={options}
-      plugins={[
-        new UnitShowerPlugin("x", "年度"),
-        new UnitShowerPlugin("y", "人口数"),
-      ]}
-    />
+    <div className={styles.graph}>
+      <Chart
+        type="line"
+        data={data}
+        options={options}
+        plugins={[
+          new UnitShowerPlugin("x", "年度"),
+          new UnitShowerPlugin("y", "人口数"),
+        ]}
+      />
+    </div>
   );
 };
