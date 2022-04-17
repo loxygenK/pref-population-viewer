@@ -1,5 +1,7 @@
 .checkbox_list {
   display: grid;
+
+  // TODO: 画面幅に応じて表示数を変える．
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 0.5em;
 
