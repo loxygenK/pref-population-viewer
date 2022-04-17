@@ -1,0 +1,11 @@
+$theme-color: (
+  "primary": #dee8ff
+);
+
+@function get-color($key) {
+  @if not map-has-key($theme-color, $key) {
+    @error "'#{$key}' was not found in the theme color (check ~/styles/theme.scss for available colors)";
+  }
+
+  @return map-get($theme-color, $key);
+}
