@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
+    "test:update": "jest --updateSnapshot",
     "lint": "$npm_execpath lint:eslint && $npm_execpath lint:prettier",
     "lint:eslint": "next lint",
     "lint:prettier": "prettier ./src/**/*.{ts,tsx} ./cypress/integration/**/*.{ts,tsx} -c",
