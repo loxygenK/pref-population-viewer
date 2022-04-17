@@ -1,9 +1,22 @@
-import { PopulationChange } from "~/domain/polulationChange";
+import { Population, PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import { PopulationChangeAPI } from "../interface/population";
+import { delay } from "./util";
 
 export class MockPopulationChangeAPI implements PopulationChangeAPI {
-  fetchPopulationChange(prefs: Prefecture[]): Promise<PopulationChange> {
-    throw new Error("Method not implemented.");
+  async fetchPopulationChange(
+    prefs: Array<Prefecture>
+  ): Promise<Array<PopulationChange>> {
+    await delay(500);
+
+    return prefs.map(this.generateMockPopulationChange);
+  }
+
+  private generateMockPopulationChange(pref: Prefecture): PopulationChange {
+    const changes = Array.from({ length: 30 }).map(
+      (_, i) => new Population(2000 + i * 5, 100000 * i)
+    );
+
+    return new PopulationChange(pref, 2020, changes);
   }
 }
