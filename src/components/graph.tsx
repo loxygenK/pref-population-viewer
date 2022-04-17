@@ -5,17 +5,27 @@ import { generateColor } from "~/util/generateColor";
 import { UnitShowerPlugin } from "./graph/unitShowerPlugin";
 
 import styles from "./graph.module.scss";
+import { PopulationChange } from "~/domain/polulationChange";
+import React from "react";
 
-export const Graph: React.FC = () => {
-  const data: ChartData<"line"> = {
-    labels: ["1", "2", "3"],
-    datasets: Array.from({ length: 47 }).map((_, i) => ({
-      label: `Data set ${i}`,
-      backgroundColor: generateColor(i),
-      borderColor: generateColor(i),
-      data: [10000, 11000 + i * 20, 12000 + i * 20],
-    })),
-  };
+export interface PopulationChangeGraphProps {
+  populationChanges: Array<PopulationChange>;
+}
+export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
+  populationChanges,
+}) => {
+  const data: ChartData<"line"> = React.useMemo(
+    () => ({
+      labels: populationChanges[0].getSortedActualChanges().map((c) => c.year),
+      datasets: populationChanges.map((c, i) => ({
+        label: c.pref.name,
+        backgroundColor: generateColor(i),
+        borderColor: generateColor(i),
+        data: c.getSortedActualChanges().map((c) => c.population),
+      })),
+    }),
+    [populationChanges]
+  );
 
   const options: ChartOptions<"line"> = {
     maintainAspectRatio: false,
