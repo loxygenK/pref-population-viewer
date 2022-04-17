@@ -20,15 +20,15 @@ pnpm i
 ### Scripts
 この表に書かれているもの以外のスクリプトは，[`package.json`](https://github.com/loxygenK/pref-population-viewer/tree/main/package.json) に記述されています．
 
-| Scripts     | 内容                                         |
-| :---------- | :------------------------------------------- |
-| `dev`       | 開発用サーバを起動する．                     |
-| `start`     | プロダクションモードでサーバを起動する．     |
-| `build`     | プロダクションビルドを作成する.              |
-| `test`      | ヘッドレスで E2E テストを実行する．          |
-| `test:head` | GUI を起動して E2E テストを実行する．        |
-| `lint`      | ESLint + Prettier の lint を実行する．       |
-| `fix`       | `pnpm lint` で出た修正可能な問題を修正する． |
+| Scripts       | 内容                                         |
+| :------------ | :------------------------------------------- |
+| `dev`         | 開発用サーバを起動する．                     |
+| `start`       | プロダクションモードでサーバを起動する．     |
+| `build`       | プロダクションビルドを作成する.              |
+| `test`        | Jest を実行する．                            |
+| `test:update` | スナップショットを更新する．                 |
+| `lint`        | ESLint + Prettier の lint を実行する．       |
+| `fix`         | `pnpm lint` で出た修正可能な問題を修正する． |
 
 ### フック
 #### `pnpm i` 後など (`prepare`)
