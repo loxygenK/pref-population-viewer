@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        command: ["lint:eslint", "lint:prettier"]
+        command: ["lint:eslint", "lint:prettier", "test"]
 
     steps:
       - uses: actions/checkout@v3
