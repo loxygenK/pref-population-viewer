@@ -16,7 +16,8 @@ export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
 }) => {
   const data: ChartData<"line"> = React.useMemo(
     () => ({
-      labels: populationChanges[0].getSortedActualChanges().map((c) => c.year),
+      labels:
+        populationChanges[0]?.getSortedActualChanges().map((c) => c.year) ?? [],
       datasets: populationChanges.map((c, i) => ({
         label: c.pref.name,
         backgroundColor: generateColor(i),
