@@ -19,6 +19,16 @@ export const Graph: React.FC = () => {
     layout: {
       padding: 30,
     },
+    plugins: {
+      legend: {
+        align: "start",
+        position: "right",
+        labels: {
+          usePointStyle: true,
+          pointStyle: "line",
+        },
+      },
+    },
     scales: {
       y: {
         beginAtZero: true,
