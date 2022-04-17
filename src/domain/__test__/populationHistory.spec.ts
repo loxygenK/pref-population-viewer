@@ -1,4 +1,4 @@
-import { Population, PopulationChange } from "../polulationHistory";
+import { Population, PopulationChange } from "../polulationChange";
 import { Prefecture } from "../prefecture";
 
 const mockedPrefecture = new Prefecture("000", "Any Pref.");
