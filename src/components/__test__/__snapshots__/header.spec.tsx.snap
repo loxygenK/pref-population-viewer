@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders correctly 1`] = `
+<header
+  className="header"
+>
+  <span
+    className="title"
+  >
+    pref-population-viewer
+  </span>
+</header>
+`;
