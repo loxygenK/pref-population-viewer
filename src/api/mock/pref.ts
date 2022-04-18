@@ -6,8 +6,9 @@ export class MockPrefectureAPI implements PrefectureAPI {
   async fetchPrefectures(): Promise<Prefecture[]> {
     await delay(500);
 
-    return Array.from({ length: 50 }).map(
-      (_, i) => new Prefecture(`pref-${i}`, `Pref. #${i}`)
-    );
+    return Array.from({ length: 50 }).map((_, i) => ({
+      id: `pref-${i}`,
+      name: `Pref. #${i}`,
+    }));
   }
 }

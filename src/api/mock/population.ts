@@ -13,10 +13,11 @@ export class MockPopulationChangeAPI implements PopulationChangeAPI {
   }
 
   private generateMockPopulationChange(pref: Prefecture): PopulationChange {
-    const changes = Array.from({ length: 30 }).map(
-      (_, i) => new Population(2000 + i * 5, 100000 * i)
-    );
+    const changes = Array.from({ length: 30 }).map((_, i) => ({
+      year: 2000 + i * 5,
+      population: 100000 * i,
+    }));
 
-    return new PopulationChange(pref, 2020, changes);
+    return { pref, forecastBoundary: 2020, changes };
   }
 }
