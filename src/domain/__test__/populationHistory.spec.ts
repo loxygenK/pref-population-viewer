@@ -1,42 +1,33 @@
-import { Population, PopulationChange } from "../polulationChange";
+import {
+  getActualMeasuredChanges,
+  getSortedPopulationChange,
+  Population,
+  PopulationChange,
+} from "../polulationChange";
 import { Prefecture } from "../prefecture";
 
-const mockedPrefecture = new Prefecture("000", "Any Pref.");
-const mockedPopulation = [
-  new Population(2000, 100000),
-  new Population(2005, 200000),
-  new Population(2010, 300000),
-  new Population(2015, 400000),
-  new Population(2020, 500000),
+const mockedPrefecture: Prefecture = {
+  id: "000",
+  name: "Hoge",
+};
+const mockedPopulation: Array<Population> = [
+  { year: 2000, population: 100000 },
+  { year: 2005, population: 200000 },
+  { year: 2010, population: 300000 },
+  { year: 2015, population: 400000 },
+  { year: 2020, population: 500000 },
 ];
+const mockedPopulationChange: PopulationChange = {
+  pref: mockedPrefecture,
+  changes: mockedPopulation,
+  forecastBoundary: 2010,
+};
 
 describe("Population change object", () => {
-  test("forecast boundary must be included in the list", () => {
-    expect(
-      () => new PopulationChange(mockedPrefecture, 2000, mockedPopulation)
-    ).not.toThrowError();
-    expect(
-      () => new PopulationChange(mockedPrefecture, 2001, mockedPopulation)
-    ).toThrowError();
-  });
-
-  test("sorted actual or forecast changes can be get", () => {
-    const populationChange = new PopulationChange(
-      mockedPrefecture,
-      2010,
-      mockedPopulation
-    );
-
-    const actual = populationChange.getSortedActualChanges();
-    const forecast = populationChange.getSortedForecastChanges();
-    const all = populationChange.getSortedChanges();
+  test("sorted actual changes can be get", () => {
+    const actual = getActualMeasuredChanges(mockedPopulationChange);
 
     expect(actual.length).toBe(3);
     expect(actual[2].year).toBe(2010);
-
-    expect(forecast.length).toBe(2);
-    expect(forecast[0].year).toBe(2015);
-
-    expect(all.length).toBe(5);
   });
 });
