@@ -5,7 +5,10 @@ import { generateColor } from "~/util/generateColor";
 import { UnitShowerPlugin } from "./graph/unitShowerPlugin";
 
 import styles from "./graph.module.scss";
-import { PopulationChange } from "~/domain/polulationChange";
+import {
+  getActualMeasuredChanges,
+  PopulationChange,
+} from "~/domain/polulationChange";
 import React from "react";
 
 export interface PopulationChangeGraphProps {
@@ -14,15 +17,20 @@ export interface PopulationChangeGraphProps {
 export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
   populationChanges,
 }) => {
+  // TODO: Show guidance when no changes is shown
   const data: ChartData<"line"> = React.useMemo(
     () => ({
       labels:
-        populationChanges[0]?.getSortedActualChanges().map((c) => c.year) ?? [],
+        populationChanges[0] !== undefined
+          ? getActualMeasuredChanges(populationChanges[0]).map((c) => c.year)
+          : [],
       datasets: populationChanges.map((c, i) => ({
         label: c.pref.name,
         backgroundColor: generateColor(i),
         borderColor: generateColor(i),
-        data: c.getSortedActualChanges().map((c) => c.population),
+        data: getActualMeasuredChanges(populationChanges[i]).map(
+          (c) => c.population
+        ),
       })),
     }),
     [populationChanges]
