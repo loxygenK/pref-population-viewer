@@ -2,11 +2,83 @@
 
 exports[`index page renders correctly 1`] = `
 Array [
-  <div>
-    Loading...
-  </div>,
-  <div>
-    Loading...
+  <ul
+    className="checkbox_list"
+  >
+    <li>
+      <input
+        checked={false}
+        id="check-pref-0"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-pref-0"
+      >
+        Pref #0
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-pref-1"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-pref-1"
+      >
+        Pref #1
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-pref-2"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-pref-2"
+      >
+        Pref #2
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-pref-3"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-pref-3"
+      >
+        Pref #3
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-pref-4"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-pref-4"
+      >
+        Pref #4
+      </label>
+    </li>
+  </ul>,
+  <div
+    className="graph"
+  >
+    <canvas
+      height={150}
+      role="img"
+      width={300}
+    />
   </div>,
 ]
 `;
