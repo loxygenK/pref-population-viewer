@@ -3,6 +3,7 @@ import React from "react";
 import { apiClient } from "~/api/client";
 import { CheckBoxList } from "~/components/checkboxList";
 import { PopulationChangeGraph } from "~/components/graph";
+import { Section } from "~/components/section";
 import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import styles from "~/styles/Home.module.scss";
@@ -30,12 +31,16 @@ const Home: NextPage<HomeProps> = ({ prefectures, populationChanges }) => {
 
   return (
     <>
-      <CheckBoxList
-        values={checkboxValues}
-        checkedIDs={enabledPrefIDs}
-        onChange={onCheckboxChange}
-      />
-      <PopulationChangeGraph populationChanges={shownPopulationChanges} />
+      <Section title="都道府県">
+        <CheckBoxList
+          values={checkboxValues}
+          checkedIDs={enabledPrefIDs}
+          onChange={onCheckboxChange}
+        />
+      </Section>
+      <Section title="人口数">
+        <PopulationChangeGraph populationChanges={shownPopulationChanges} />
+      </Section>
     </>
   );
 };
