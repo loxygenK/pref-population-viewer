@@ -10,7 +10,7 @@
     "test:update": "jest --updateSnapshot",
     "lint": "$npm_execpath lint:eslint && $npm_execpath lint:prettier",
     "lint:eslint": "next lint",
-    "lint:prettier": "prettier ./src/**/*.{ts,tsx} -c",
+    "lint:prettier": "prettier ./src/**/*.{ts,tsx,module.scss} -c",
     "fix": "$npm_execpath fix:eslint && $npm_execpath fix:prettier",
     "fix:eslint": "$npm_execpath lint:eslint -- --fix",
     "fix:prettier": "$npm_execpath lint:prettier -- -w",
