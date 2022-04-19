@@ -4,10 +4,10 @@ exports[`Header component renders correctly 1`] = `
 <header
   className="header"
 >
-  <span
+  <h1
     className="title"
   >
     pref-population-viewer
-  </span>
+  </h1>
 </header>
 `;

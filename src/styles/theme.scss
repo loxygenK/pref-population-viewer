@@ -1,5 +1,12 @@
 $theme-color: (
-  "primary": #dee8ff
+  "primary": #dee8ff,
+  "heading": #444444
+);
+
+$anchors: (
+  "laptop": 1024px,
+  "tablet": 768px,
+  "phone": 425px,
 );
 
 @function get-color($key) {
@@ -8,4 +15,14 @@ $theme-color: (
   }
 
   @return map-get($theme-color, $key);
+}
+
+@mixin layout-for($target) {
+  @if not map-has-key($anchors, $target) {
+    @error "'#{$target}' was not found in the layout target (check ~/styles/theme.scss for available targets)";
+  }
+
+  @media screen and (min-width: #{map-get($anchors, $target)}) {
+    @content;
+  }
 }

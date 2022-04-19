@@ -1,0 +1,6 @@
+@use "~/styles/theme.scss";
+
+.section_heading {
+  font-size: 0.9em;
+  color: theme.get-color(heading);
+}
