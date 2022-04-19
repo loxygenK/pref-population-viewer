@@ -1,0 +1,29 @@
+@use "~/styles/theme.scss";
+
+.content {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1em;
+  padding: 0 3em;
+
+  @include theme.layout-for(laptop) {
+    gap: 3em;
+    padding: 0 10%;
+
+    flex-direction: row;
+  }
+}
+
+.pref_list {
+  @include theme.layout-for(laptop) {
+    width: 33%;
+  }
+}
+
+.population_graph {
+  @include theme.layout-for(laptop) {
+    flex: 1;
+  }
+}

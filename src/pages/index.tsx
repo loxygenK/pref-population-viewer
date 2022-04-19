@@ -6,7 +6,7 @@ import { PopulationChangeGraph } from "~/components/graph";
 import { Section } from "~/components/section";
 import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
-import styles from "~/styles/Home.module.scss";
+import styles from "./index.module.scss";
 import { ValueWithID } from "~/types/valueWithId";
 
 interface HomeProps {
@@ -30,18 +30,18 @@ const Home: NextPage<HomeProps> = ({ prefectures, populationChanges }) => {
   }, [enabledPrefIDs, populationChanges]);
 
   return (
-    <>
-      <Section title="都道府県">
+    <article className={styles.content}>
+      <Section title="都道府県" className={styles.pref_list}>
         <CheckBoxList
           values={checkboxValues}
           checkedIDs={enabledPrefIDs}
           onChange={onCheckboxChange}
         />
       </Section>
-      <Section title="人口数">
+      <Section title="人口数" className={styles.population_graph}>
         <PopulationChangeGraph populationChanges={shownPopulationChanges} />
       </Section>
-    </>
+    </article>
   );
 };
 
