@@ -1,13 +1,15 @@
 import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import { PopulationChangeAPI } from "../interface/population";
+import { buildRESASReqeuster, RESASRequester } from "./request";
 import { RESASRequestConfig } from "./types";
 
 export class RESASPopulationChangeAPI implements PopulationChangeAPI {
-  private readonly config: RESASRequestConfig;
+  private readonly executeRequest: RESASRequester;
 
   constructor(config: RESASRequestConfig) {
-    this.config = config;
+    fetch;
+    this.executeRequest = buildRESASReqeuster(config);
   }
 
   fetchPopulationChange(prefs: Prefecture[]): Promise<PopulationChange[]> {
