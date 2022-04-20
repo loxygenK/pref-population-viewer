@@ -91,13 +91,13 @@ exports[`index page renders correctly 1`] = `
       人口数
     </h2>
     <div
-      className="graph"
+      className="suggestion_area"
     >
-      <canvas
-        height={150}
-        role="img"
-        width={300}
-      />
+      <span
+        className="suggestion_text"
+      >
+        都道府県リストから表示する都道府県を選択してください
+      </span>
     </div>
   </section>
 </article>
