@@ -4,7 +4,7 @@ import { buildMockClient } from "./mock/buildClient";
 import { buildRESASClient } from "./resas/buildClient";
 
 const buildClient = (): APIClient => {
-  const mode = getEnvironmentVariable("NEXT_PUBLIC_API_MODE");
+  const mode = getEnvironmentVariable("API_MODE");
 
   if (mode === "dev") {
     return buildMockClient();
