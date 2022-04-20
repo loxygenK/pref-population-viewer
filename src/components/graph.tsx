@@ -22,20 +22,27 @@ export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
     [populationChanges]
   );
   if (config === undefined) {
-    return <div></div>;
+    return (
+      <div className={styles.suggestion_area}>
+        <span className={styles.suggestion_text}>
+          都道府県リストから表示する都道府県を選択してください
+        </span>
+      </div>
+    );
   }
 
   return (
-    <Chart
-      className={styles.graph}
-      type="line"
-      data={config.data}
-      options={config.options}
-      plugins={[
-        new UnitShowerPlugin("x", "年度"),
-        new UnitShowerPlugin("y", "人口数"),
-      ]}
-    />
+    <div className={styles.graph_area}>
+      <Chart
+        type="line"
+        data={config.data}
+        options={config.options}
+        plugins={[
+          new UnitShowerPlugin("x", "年度"),
+          new UnitShowerPlugin("y", "人口数"),
+        ]}
+      />
+    </div>
   );
 };
 
