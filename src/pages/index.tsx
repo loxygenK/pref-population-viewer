@@ -2,7 +2,10 @@ import type { NextPage } from "next";
 import React from "react";
 import { apiClient } from "~/api/client";
 import { CheckBoxList } from "~/components/checkboxList";
-import { PopulationChangeGraph } from "~/components/graph";
+import {
+  PopulationChangeGraph,
+  PopulationChangeWithIndex,
+} from "~/components/graph";
 import { Section } from "~/components/section";
 import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
@@ -25,9 +28,12 @@ const Home: NextPage<HomeProps> = ({ prefectures, populationChanges }) => {
       return prefectures?.map((p) => ({ id: p.id, value: p.name }));
     }, [prefectures]);
 
-  const shownPopulationChanges: Array<PopulationChange> = React.useMemo(() => {
-    return populationChanges.filter((p) => enabledPrefIDs.includes(p.pref.id));
-  }, [enabledPrefIDs, populationChanges]);
+  const shownPopulationChanges: Array<PopulationChangeWithIndex> =
+    React.useMemo(() => {
+      return populationChanges
+        .map((p, i) => ({ dataIndex: i, populationChange: p }))
+        .filter((p) => enabledPrefIDs.includes(p.populationChange.pref.id));
+    }, [enabledPrefIDs, populationChanges]);
 
   return (
     <article className={styles.content}>

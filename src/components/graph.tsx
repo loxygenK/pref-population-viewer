@@ -11,8 +11,12 @@ import {
 } from "~/domain/polulationChange";
 import React from "react";
 
+export interface PopulationChangeWithIndex {
+  dataIndex: number;
+  populationChange: PopulationChange;
+}
 export interface PopulationChangeGraphProps {
-  populationChanges: Array<PopulationChange>;
+  populationChanges: Array<PopulationChangeWithIndex>;
 }
 export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
   populationChanges,
@@ -47,19 +51,21 @@ export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
 };
 
 const buildGraphConfiguration = (
-  populationChanges: Array<PopulationChange>
+  populationChanges: Array<PopulationChangeWithIndex>
 ) => {
   if (populationChanges.length === 0) {
     return undefined;
   }
 
   const data = {
-    labels: getActualMeasuredChanges(populationChanges[0]).map((c) => c.year),
-    datasets: populationChanges.map((c, i) => ({
-      label: c.pref.name,
-      backgroundColor: generateColor(i),
-      borderColor: generateColor(i),
-      data: getActualMeasuredChanges(populationChanges[i]).map(
+    labels: getActualMeasuredChanges(populationChanges[0].populationChange).map(
+      (c) => c.year
+    ),
+    datasets: populationChanges.map((c) => ({
+      label: c.populationChange.pref.name,
+      backgroundColor: generateColor(c.dataIndex),
+      borderColor: generateColor(c.dataIndex),
+      data: getActualMeasuredChanges(populationChanges[0].populationChange).map(
         (c) => c.population
       ),
     })),
