@@ -8,7 +8,7 @@ export class UnitShowerPlugin implements ChartJSPlugin {
   readonly axis: UnitAxis;
   readonly content: string;
 
-  constructor(axis: "x" | "y", content: string) {
+  constructor(axis: UnitAxis, content: string) {
     this.axis = axis;
     this.content = content;
   }
