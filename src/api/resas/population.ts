@@ -1,4 +1,4 @@
-import { PopulationChange } from "~/domain/polulationChange";
+import { Population, PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import { safelyParseNumber } from "~/util/safelyParseNumber";
 import { PopulationChangeAPI } from "../interface/population";
@@ -51,6 +51,7 @@ export class RESASPopulationChangeAPI implements PopulationChangeAPI {
       (d) => d.label === "総人口"
     );
     if (summaryPopulationChange === undefined) {
+      // safety: API Scheme specifies there is the data with label '総人口', so this must not be occured.
       throw new Error(
         "Expected the data with label '総人口', but it didn't exist"
       );
@@ -58,11 +59,24 @@ export class RESASPopulationChangeAPI implements PopulationChangeAPI {
 
     return {
       pref,
-      changes: summaryPopulationChange.data.map((d) => ({
-        year: safelyParseNumber(d.year),
-        population: safelyParseNumber(d.value),
-      })),
+      changes: summaryPopulationChange.data.map(
+        this.convertResponseToPopulation
+      ),
       forecastBoundary: response.boundaryYear,
     };
+  }
+
+  private convertResponseToPopulation(
+    change: AnnualPopulationChangeResponse
+  ): Population {
+    const year = safelyParseNumber(change.year);
+    const population = safelyParseNumber(change.value);
+
+    if (year === undefined || population === undefined) {
+      // safety: API Scheme specifies this is numeric string, so this must not be occurred.
+      throw new Error("Couldn't parse year or population into number");
+    }
+
+    return { year, population };
   }
 }
