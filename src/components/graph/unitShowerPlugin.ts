@@ -13,7 +13,7 @@ export class UnitShowerPlugin implements ChartJSPlugin {
     this.content = content;
   }
 
-  beforeRender(chart: Chart) {
+  beforeUpdate(chart: Chart) {
     const currentPadding = chart.options.layout?.padding ?? {};
 
     if (typeof currentPadding !== "object") {
