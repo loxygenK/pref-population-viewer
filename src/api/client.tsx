@@ -1,9 +1,10 @@
+import { getEnvironmentVariable } from "~/util/getEnvironmentVariable";
 import { APIClient } from "./hook/type";
 import { buildMockClient } from "./interface/buildClient";
 import { buildRESASClient } from "./resas/buildClient";
 
 const buildClient = (): APIClient => {
-  const mode = process.env.NEXT_PUBLIC_API_MODE;
+  const mode = getEnvironmentVariable("NEXT_PUBLIC_API_MODE");
 
   if (mode === "dev") {
     return buildMockClient();
