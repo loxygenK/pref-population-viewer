@@ -40,21 +40,19 @@ export const CheckBoxList: React.FC<CheckBoxListProps> = ({
         pressed={shown}
         onChange={onShowToggleButtonClicked}
       />
-      {shown && (
-        <ul className={styles.checkbox_list}>
-          {values.map((v) => (
-            <li key={v.id}>
-              <input
-                id={`check-${v.id}`}
-                type="checkbox"
-                onChange={onCheckboxChanged(v.id)}
-                checked={checkedIDs.indexOf(v.id) !== -1}
-              />
-              <label htmlFor={`check-${v.id}`}>{v.value}</label>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className={`${styles.checkbox_list} ${shown ? "" : styles.collapse}`}>
+        {values.map((v) => (
+          <li key={v.id}>
+            <input
+              id={`check-${v.id}`}
+              type="checkbox"
+              onChange={onCheckboxChanged(v.id)}
+              checked={checkedIDs.indexOf(v.id) !== -1}
+            />
+            <label htmlFor={`check-${v.id}`}>{v.value}</label>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
