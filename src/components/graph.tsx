@@ -1,5 +1,5 @@
 import "chart.js/auto";
-import { ChartData, ChartOptions } from "chart.js/auto";
+import { ChartOptions } from "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import { generateColor } from "~/util/generateColor";
 import { UnitShowerPlugin } from "./graph/unitShowerPlugin";
@@ -11,30 +11,65 @@ import {
 } from "~/domain/polulationChange";
 import React from "react";
 
+export interface PopulationChangeWithIndex {
+  dataIndex: number;
+  populationChange: PopulationChange;
+}
 export interface PopulationChangeGraphProps {
-  populationChanges: Array<PopulationChange>;
+  populationChanges: Array<PopulationChangeWithIndex>;
 }
 export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
   populationChanges,
 }) => {
-  // TODO: Show guidance when no changes is shown
-  const data: ChartData<"line"> = React.useMemo(
-    () => ({
-      labels:
-        populationChanges[0] !== undefined
-          ? getActualMeasuredChanges(populationChanges[0]).map((c) => c.year)
-          : [],
-      datasets: populationChanges.map((c, i) => ({
-        label: c.pref.name,
-        backgroundColor: generateColor(i),
-        borderColor: generateColor(i),
-        data: getActualMeasuredChanges(populationChanges[i]).map(
-          (c) => c.population
-        ),
-      })),
-    }),
+  const config = React.useMemo(
+    () => buildGraphConfiguration(populationChanges),
     [populationChanges]
   );
+  if (config === undefined) {
+    return (
+      <div className={styles.suggestion_area}>
+        <span className={styles.suggestion_text}>
+          都道府県リストから表示する都道府県を選択してください
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.graph_area}>
+      <Chart
+        type="line"
+        data={config.data}
+        options={config.options}
+        plugins={[
+          new UnitShowerPlugin("x", "年度"),
+          new UnitShowerPlugin("y", "人口数"),
+        ]}
+      />
+    </div>
+  );
+};
+
+const buildGraphConfiguration = (
+  populationChanges: Array<PopulationChangeWithIndex>
+) => {
+  if (populationChanges.length === 0) {
+    return undefined;
+  }
+
+  const data = {
+    labels: getActualMeasuredChanges(populationChanges[0].populationChange).map(
+      (c) => c.year
+    ),
+    datasets: populationChanges.map((c) => ({
+      label: c.populationChange.pref.name,
+      backgroundColor: generateColor(c.dataIndex),
+      borderColor: generateColor(c.dataIndex),
+      data: getActualMeasuredChanges(populationChanges[0].populationChange).map(
+        (c) => c.population
+      ),
+    })),
+  };
 
   const options: ChartOptions<"line"> = {
     maintainAspectRatio: false,
@@ -55,17 +90,5 @@ export const PopulationChangeGraph: React.FC<PopulationChangeGraphProps> = ({
     },
   };
 
-  return (
-    <div className={styles.graph}>
-      <Chart
-        type="line"
-        data={data}
-        options={options}
-        plugins={[
-          new UnitShowerPlugin("x", "年度"),
-          new UnitShowerPlugin("y", "人口数"),
-        ]}
-      />
-    </div>
-  );
+  return { data, options };
 };
