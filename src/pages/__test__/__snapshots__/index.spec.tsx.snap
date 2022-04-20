@@ -1,104 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`index page renders correctly 1`] = `
-<article
-  className="content"
+<div
+  className="page_wrapper"
 >
-  <section
-    className="pref_list"
+  <article
+    className="content"
   >
-    <h2
-      className="section_heading"
+    <section
+      className="pref_list"
     >
-      都道府県
-    </h2>
-    <ul
-      className="checkbox_list"
-    >
-      <li>
-        <input
-          checked={false}
-          id="check-pref-0"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        <label
-          htmlFor="check-pref-0"
-        >
-          Pref #0
-        </label>
-      </li>
-      <li>
-        <input
-          checked={false}
-          id="check-pref-1"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        <label
-          htmlFor="check-pref-1"
-        >
-          Pref #1
-        </label>
-      </li>
-      <li>
-        <input
-          checked={false}
-          id="check-pref-2"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        <label
-          htmlFor="check-pref-2"
-        >
-          Pref #2
-        </label>
-      </li>
-      <li>
-        <input
-          checked={false}
-          id="check-pref-3"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        <label
-          htmlFor="check-pref-3"
-        >
-          Pref #3
-        </label>
-      </li>
-      <li>
-        <input
-          checked={false}
-          id="check-pref-4"
-          onChange={[Function]}
-          type="checkbox"
-        />
-        <label
-          htmlFor="check-pref-4"
-        >
-          Pref #4
-        </label>
-      </li>
-    </ul>
-  </section>
-  <section
-    className="population_graph"
-  >
-    <h2
-      className="section_heading"
-    >
-      人口数
-    </h2>
-    <div
-      className="suggestion_area"
-    >
-      <span
-        className="suggestion_text"
+      <h2
+        className="section_heading"
       >
-        都道府県リストから表示する都道府県を選択してください
-      </span>
-    </div>
-  </section>
-</article>
+        都道府県
+      </h2>
+      <ul
+        className="checkbox_list"
+      >
+        <li>
+          <input
+            checked={false}
+            id="check-pref-0"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="check-pref-0"
+          >
+            Pref #0
+          </label>
+        </li>
+        <li>
+          <input
+            checked={false}
+            id="check-pref-1"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="check-pref-1"
+          >
+            Pref #1
+          </label>
+        </li>
+        <li>
+          <input
+            checked={false}
+            id="check-pref-2"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="check-pref-2"
+          >
+            Pref #2
+          </label>
+        </li>
+        <li>
+          <input
+            checked={false}
+            id="check-pref-3"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="check-pref-3"
+          >
+            Pref #3
+          </label>
+        </li>
+        <li>
+          <input
+            checked={false}
+            id="check-pref-4"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="check-pref-4"
+          >
+            Pref #4
+          </label>
+        </li>
+      </ul>
+    </section>
+    <section
+      className="population_graph"
+    >
+      <h2
+        className="section_heading"
+      >
+        人口数
+      </h2>
+      <div
+        className="suggestion_area"
+      >
+        <span
+          className="suggestion_text"
+        >
+          都道府県リストから表示する都道府県を選択してください
+        </span>
+      </div>
+    </section>
+  </article>
+  <aside
+    className="credits"
+  >
+    RESAS (地域経済分析システム) 提供のデータを加工して作成
+  </aside>
+</div>
 `;

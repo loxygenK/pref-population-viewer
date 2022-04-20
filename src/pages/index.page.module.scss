@@ -1,16 +1,24 @@
 @use "~/styles/theme.scss";
 
-.content {
-  display: flex;
+.page_wrapper {
+  display: grid;
+  grid-gap: 2em;
 
-  flex-direction: column;
-
-  gap: 1em;
   padding: 0 3em;
 
   @include theme.layout-for(laptop) {
-    gap: 3em;
     padding: 0 10%;
+  }
+}
+
+.content {
+  display: flex;
+  gap: 1em;
+
+  flex-direction: column;
+
+  @include theme.layout-for(laptop) {
+    gap: 3em;
 
     flex-direction: row;
   }
@@ -26,4 +34,13 @@
   @include theme.layout-for(laptop) {
     flex: 1;
   }
+}
+
+.credits {
+  border-top: 1px solid theme.get-color(border);
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9em;
+
+  color: theme.get-color(hint);
 }
