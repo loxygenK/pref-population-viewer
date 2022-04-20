@@ -1,6 +1,6 @@
 import { getEnvironmentVariable } from "~/util/getEnvironmentVariable";
-import { APIClient } from "./hook/type";
-import { buildMockClient } from "./interface/buildClient";
+import { APIClient } from "./type";
+import { buildMockClient } from "./mock/buildClient";
 import { buildRESASClient } from "./resas/buildClient";
 
 const buildClient = (): APIClient => {
