@@ -1,0 +1,12 @@
+.pressed {
+  position: relative;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-color: rgba(black, 0.2);
+  }
+}
