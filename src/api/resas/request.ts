@@ -17,7 +17,8 @@ export const buildRESASReqeuster: (
       method: "GET",
       url: `${trimmedOrigin}${prefixedEndpoint}`,
       headers: {
-        Authorization: `Bearer ${config.apiKey}`,
+        "Content-Type": "application/json",
+        "X-API-KEY": config.apiKey,
       },
     });
 
