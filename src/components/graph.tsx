@@ -65,7 +65,7 @@ const buildGraphConfiguration = (
       label: c.populationChange.pref.name,
       backgroundColor: generateColor(c.dataIndex),
       borderColor: generateColor(c.dataIndex),
-      data: getActualMeasuredChanges(populationChanges[0].populationChange).map(
+      data: getActualMeasuredChanges(c.populationChange).map(
         (c) => c.population
       ),
     })),
