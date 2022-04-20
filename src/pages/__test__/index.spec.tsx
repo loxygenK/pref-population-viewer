@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import { PopulationChange } from "~/domain/polulationChange";
-import Home from "~/pages/index";
+import Home from "~/pages/index.page";
 
 describe("index page", () => {
   test("renders correctly", () => {
