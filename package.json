@@ -17,6 +17,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "chart.js": "^3.7.1",
     "color": "^4.2.3",
     "next": "12.1.5",
