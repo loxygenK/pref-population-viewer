@@ -1,3 +1,5 @@
+@use "~/styles/theme.scss";
+
 .checkbox_list_wrapper {
   display: grid;
   gap: 0.5em;
@@ -15,5 +17,10 @@
 }
 
 .show_toggle_button {
+  display: unset;
   width: 100%;
+
+  @include theme.layout-for(tablet) {
+    display: none;
+  }
 }
