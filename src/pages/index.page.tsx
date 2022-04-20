@@ -9,7 +9,7 @@ import {
 import { Section } from "~/components/section";
 import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
-import styles from "./index.module.scss";
+import styles from "./index.page.module.scss";
 import { ValueWithID } from "~/types/valueWithId";
 
 interface HomeProps {
