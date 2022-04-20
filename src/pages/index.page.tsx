@@ -36,18 +36,23 @@ const Home: NextPage<HomeProps> = ({ prefectures, populationChanges }) => {
     }, [enabledPrefIDs, populationChanges]);
 
   return (
-    <article className={styles.content}>
-      <Section title="都道府県" className={styles.pref_list}>
-        <CheckBoxList
-          values={checkboxValues}
-          checkedIDs={enabledPrefIDs}
-          onChange={onCheckboxChange}
-        />
-      </Section>
-      <Section title="人口数" className={styles.population_graph}>
-        <PopulationChangeGraph populationChanges={shownPopulationChanges} />
-      </Section>
-    </article>
+    <div className={styles.page_wrapper}>
+      <article className={styles.content}>
+        <Section title="都道府県" className={styles.pref_list}>
+          <CheckBoxList
+            values={checkboxValues}
+            checkedIDs={enabledPrefIDs}
+            onChange={onCheckboxChange}
+          />
+        </Section>
+        <Section title="人口数" className={styles.population_graph}>
+          <PopulationChangeGraph populationChanges={shownPopulationChanges} />
+        </Section>
+      </article>
+      <aside className={styles.credits}>
+        RESAS (地域経済分析システム) 提供のデータを加工して作成
+      </aside>
+    </div>
   );
 };
 
