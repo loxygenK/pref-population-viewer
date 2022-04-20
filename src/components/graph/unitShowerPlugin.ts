@@ -1,4 +1,4 @@
-import Chart, { Plugin as ChartJSPlugin } from "chart.js/auto";
+import Chart, { ChartArea, Plugin as ChartJSPlugin } from "chart.js/auto";
 
 export type UnitAxis = "x" | "y";
 
@@ -8,9 +8,37 @@ export class UnitShowerPlugin implements ChartJSPlugin {
   readonly axis: UnitAxis;
   readonly content: string;
 
-  constructor(axis: "x" | "y", content: string) {
+  constructor(axis: UnitAxis, content: string) {
     this.axis = axis;
     this.content = content;
+  }
+
+  beforeRender(chart: Chart) {
+    const currentPadding = chart.options.layout?.padding ?? {};
+
+    if (typeof currentPadding !== "object") {
+      throw new Error(
+        "Padding configuration should be undefined or object if this plugin is used"
+      );
+    }
+
+    let newPadding: Partial<ChartArea> = {};
+    if (this.axis === "x") {
+      newPadding = {
+        ...currentPadding,
+        right: Math.max(30, currentPadding.right ?? 0),
+      };
+    } else {
+      newPadding = {
+        ...currentPadding,
+        top: Math.max(30, currentPadding.top ?? 0),
+      };
+    }
+
+    chart.options.layout = {
+      ...(chart.options.layout ?? {}),
+      padding: newPadding,
+    };
   }
 
   afterDraw(chart: Chart) {
