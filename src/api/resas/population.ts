@@ -9,9 +9,13 @@ interface AnnualPopulationChangeResponse {
   year: string;
   value: string;
 }
+interface PopulationChangeLabelResponse {
+  label: string;
+  data: Array<AnnualPopulationChangeResponse>;
+}
 interface PopulationChangeResponse {
   boundaryYear: number;
-  data: Array<AnnualPopulationChangeResponse>;
+  data: Array<PopulationChangeLabelResponse>;
 }
 type Response = RESASResponse<PopulationChangeResponse>;
 
@@ -43,9 +47,18 @@ export class RESASPopulationChangeAPI implements PopulationChangeAPI {
     pref: Prefecture,
     response: PopulationChangeResponse
   ): PopulationChange {
+    const summaryPopulationChange = response.data.find(
+      (d) => d.label === "総人口"
+    );
+    if (summaryPopulationChange === undefined) {
+      throw new Error(
+        "Expected the data with label '総人口', but it didn't exist"
+      );
+    }
+
     return {
       pref,
-      changes: response.data.map((d) => ({
+      changes: summaryPopulationChange.data.map((d) => ({
         year: safelyParseNumber(d.year),
         population: safelyParseNumber(d.value),
       })),
