@@ -1,5 +1,19 @@
+@use "~/styles/theme.scss";
+
+.checkbox_list_wrapper {
+  display: grid;
+  gap: 0.5em;
+}
+
 .checkbox_list {
   display: grid;
+  &.collapse {
+    display: none;
+
+    @include theme.layout-for(tablet) {
+      display: grid;
+    }
+  }
 
   grid-template-columns: repeat(auto-fill, minmax(6em, 1fr));
   grid-gap: 0.5em;
@@ -7,4 +21,13 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.show_toggle_button {
+  display: unset;
+  width: 100%;
+
+  @include theme.layout-for(tablet) {
+    display: none;
+  }
 }

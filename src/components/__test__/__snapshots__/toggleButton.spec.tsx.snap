@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section wrapper component renders correctly when button is not pressed 1`] = `
+<button
+  className="toggle_button  "
+  onClick={[Function]}
+>
+  Unpressed
+</button>
+`;
+
+exports[`Section wrapper component renders correctly when button is pressed 1`] = `
+<button
+  className="toggle_button pressed "
+  onClick={[Function]}
+>
+  Pressed
+</button>
+`;

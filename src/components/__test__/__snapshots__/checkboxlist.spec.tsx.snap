@@ -1,138 +1,148 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox list component should render correctly 1`] = `
-<ul
-  className="checkbox_list"
+<div
+  className="checkbox_list_wrapper"
 >
-  <li>
-    <input
-      checked={true}
-      id="check-0"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-0"
-    >
-      ID 0
-    </label>
-  </li>
-  <li>
-    <input
-      checked={false}
-      id="check-1"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-1"
-    >
-      ID 1
-    </label>
-  </li>
-  <li>
-    <input
-      checked={true}
-      id="check-2"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-2"
-    >
-      ID 2
-    </label>
-  </li>
-  <li>
-    <input
-      checked={false}
-      id="check-3"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-3"
-    >
-      ID 3
-    </label>
-  </li>
-  <li>
-    <input
-      checked={true}
-      id="check-4"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-4"
-    >
-      ID 4
-    </label>
-  </li>
-  <li>
-    <input
-      checked={false}
-      id="check-5"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-5"
-    >
-      ID 5
-    </label>
-  </li>
-  <li>
-    <input
-      checked={true}
-      id="check-6"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-6"
-    >
-      ID 6
-    </label>
-  </li>
-  <li>
-    <input
-      checked={false}
-      id="check-7"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-7"
-    >
-      ID 7
-    </label>
-  </li>
-  <li>
-    <input
-      checked={true}
-      id="check-8"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-8"
-    >
-      ID 8
-    </label>
-  </li>
-  <li>
-    <input
-      checked={false}
-      id="check-9"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      htmlFor="check-9"
-    >
-      ID 9
-    </label>
-  </li>
-</ul>
+  <button
+    className="toggle_button pressed show_toggle_button"
+    onClick={[Function]}
+  >
+    折りたたむ
+  </button>
+  <ul
+    className="checkbox_list "
+  >
+    <li>
+      <input
+        checked={true}
+        id="check-0"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-0"
+      >
+        ID 0
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-1"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-1"
+      >
+        ID 1
+      </label>
+    </li>
+    <li>
+      <input
+        checked={true}
+        id="check-2"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-2"
+      >
+        ID 2
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-3"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-3"
+      >
+        ID 3
+      </label>
+    </li>
+    <li>
+      <input
+        checked={true}
+        id="check-4"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-4"
+      >
+        ID 4
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-5"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-5"
+      >
+        ID 5
+      </label>
+    </li>
+    <li>
+      <input
+        checked={true}
+        id="check-6"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-6"
+      >
+        ID 6
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-7"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-7"
+      >
+        ID 7
+      </label>
+    </li>
+    <li>
+      <input
+        checked={true}
+        id="check-8"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-8"
+      >
+        ID 8
+      </label>
+    </li>
+    <li>
+      <input
+        checked={false}
+        id="check-9"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="check-9"
+      >
+        ID 9
+      </label>
+    </li>
+  </ul>
+</div>
 `;

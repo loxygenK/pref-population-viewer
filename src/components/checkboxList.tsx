@@ -1,5 +1,7 @@
+import React from "react";
 import { ValueWithID } from "~/types/valueWithId";
 import styles from "./checkboxList.module.scss";
+import { ToggleButton } from "./toggleButton";
 
 export interface CheckBoxListProps {
   values: Array<ValueWithID<string>>;
@@ -11,6 +13,12 @@ export const CheckBoxList: React.FC<CheckBoxListProps> = ({
   checkedIDs,
   onChange,
 }) => {
+  const [shown, setShown] = React.useState(true);
+
+  const onShowToggleButtonClicked = (newShownState: boolean) => {
+    setShown(newShownState);
+  };
+
   const onCheckboxChanged =
     (id: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       let newCheckedIDs = [...checkedIDs];
@@ -24,18 +32,27 @@ export const CheckBoxList: React.FC<CheckBoxListProps> = ({
     };
 
   return (
-    <ul className={styles.checkbox_list}>
-      {values.map((v) => (
-        <li key={v.id}>
-          <input
-            id={`check-${v.id}`}
-            type="checkbox"
-            onChange={onCheckboxChanged(v.id)}
-            checked={checkedIDs.indexOf(v.id) !== -1}
-          />
-          <label htmlFor={`check-${v.id}`}>{v.value}</label>
-        </li>
-      ))}
-    </ul>
+    <div className={styles.checkbox_list_wrapper}>
+      <ToggleButton
+        className={styles.show_toggle_button}
+        captionWhenPressed="折りたたむ"
+        captionWhenUnpressed="表示する"
+        pressed={shown}
+        onChange={onShowToggleButtonClicked}
+      />
+      <ul className={`${styles.checkbox_list} ${shown ? "" : styles.collapse}`}>
+        {values.map((v) => (
+          <li key={v.id}>
+            <input
+              id={`check-${v.id}`}
+              type="checkbox"
+              onChange={onCheckboxChanged(v.id)}
+              checked={checkedIDs.indexOf(v.id) !== -1}
+            />
+            <label htmlFor={`check-${v.id}`}>{v.value}</label>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
