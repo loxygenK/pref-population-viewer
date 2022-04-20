@@ -1,13 +1,12 @@
 import { Prefecture } from "~/domain/prefecture";
 import { PrefectureAPI } from "../interface/pref";
+import { RESASRequestConfig } from "./types";
 
 export class RESASPrefectureAPI implements PrefectureAPI {
-  private readonly apiKey: string;
-  private readonly origin: string;
+  private readonly config: RESASRequestConfig;
 
-  constructor(apiKey: string, origin: string) {
-    this.apiKey = apiKey;
-    this.origin = origin;
+  constructor(config: RESASRequestConfig) {
+    this.config = config;
   }
 
   fetchPrefectures(): Promise<Prefecture[]> {
