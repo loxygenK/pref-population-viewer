@@ -1,3 +1,8 @@
+.checkbox_list_wrapper {
+  display: grid;
+  gap: 0.5em;
+}
+
 .checkbox_list {
   display: grid;
 
@@ -7,4 +12,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.show_toggle_button {
+  width: 100%;
 }
