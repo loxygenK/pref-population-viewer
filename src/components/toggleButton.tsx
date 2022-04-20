@@ -22,9 +22,11 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
 
   return (
     <button
-      className={`${styles.toggle_button} ${pressed ? styles.pressed : ""} ${
-        className ?? ""
-      }`}
+      className={[
+        styles.toggle_button,
+        pressed ? styles.pressed : "",
+        className ?? "",
+      ].join(" ")}
       onClick={onButtonClicked}
     >
       {pressed ? captionWhenPressed : captionWhenUnpressed}
