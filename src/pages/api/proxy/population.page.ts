@@ -21,7 +21,9 @@ const handler: NextApiHandler<
 
   try {
     const prefs = await apiClient.pref.fetchPrefectures();
-    const selectedPrefs = prefs.filter((p) => prefIDs.includes(p.id));
+    const selectedPrefs = prefs.filter((p) =>
+      prefIDs.includes(p.id.toString())
+    );
 
     if (selectedPrefs.length !== prefIDs.length) {
       res.status(404).json({

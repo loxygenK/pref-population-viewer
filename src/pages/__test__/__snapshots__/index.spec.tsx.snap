@@ -27,6 +27,9 @@ exports[`index page renders correctly 1`] = `
       >
         人口数
       </h2>
+      <div>
+        Loading...
+      </div>
     </section>
   </article>
   <aside

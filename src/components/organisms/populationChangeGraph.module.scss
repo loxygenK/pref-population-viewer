@@ -1,0 +1,16 @@
+.graph_area {
+  height: 40em;
+}
+
+.suggestion_area {
+  @extend .graph_area;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestion_text {
+  font-size: 1.1em;
+  font-weight: 600;
+}

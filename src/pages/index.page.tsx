@@ -1,17 +1,12 @@
 import type { NextPage } from "next";
 import React from "react";
 import { apiClient } from "~/api/client/client";
-import { CheckBoxList } from "~/components/molecules/checkboxList";
-import {
-  PopulationChangeGraph,
-  PopulationChangeWithIndex,
-} from "~/components/atom/graph";
 import { Section } from "~/components/atom/section";
 import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import styles from "./index.page.module.scss";
-import { ValueWithID } from "~/types/valueWithId";
 import { PrefectureCheckBoxList } from "~/components/organisms/prefectureCheckboxList";
+import { PopulationChangeGraph } from "~/components/organisms/populationChangeGraph";
 
 interface HomeProps {
   populationChanges: Array<PopulationChange>;
@@ -23,13 +18,6 @@ const Home: NextPage<HomeProps> = ({ populationChanges }) => {
     setEnabledPrefs(() => newCheckedPrefs);
   };
 
-  // const shownPopulationChanges: Array<PopulationChangeWithIndex> =
-  //   React.useMemo(() => {
-  //     return populationChanges
-  //       .map((p, i) => ({ dataIndex: i, populationChange: p }))
-  //       .filter((p) => enabledPrefIDs.includes(p.populationChange.pref.id));
-  //   }, [enabledPrefIDs, populationChanges]);
-
   return (
     <div className={styles.page_wrapper}>
       <article className={styles.content}>
@@ -40,7 +28,7 @@ const Home: NextPage<HomeProps> = ({ populationChanges }) => {
           />
         </Section>
         <Section title="人口数" className={styles.population_graph}>
-          {/* <PopulationChangeGraph populationChanges={shownPopulationChanges} /> */}
+          <PopulationChangeGraph prefsToShow={enabledPrefs} />
         </Section>
       </article>
       <aside className={styles.credits}>
