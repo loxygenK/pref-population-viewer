@@ -1,18 +1,18 @@
-import renderer from "react-test-renderer";
 import { PopulationChangeGraph } from "../populationChangeGraph";
+import { renderStatefulComponent } from "~/test/renderStatefulComponent";
 
 describe("Header component", () => {
-  it("renders the suggestion correctly when no populationChange is supplied", () => {
-    const tree = renderer
-      .create(<PopulationChangeGraph prefsToShow={[]} />)
-      .toJSON();
+  it("renders the suggestion correctly when no populationChange is supplied", async () => {
+    const rendered = await renderStatefulComponent((root) => {
+      root.render(<PopulationChangeGraph prefsToShow={[]} />);
+    });
 
-    expect(tree).toMatchSnapshot();
+    expect(rendered).toMatchSnapshot();
   });
 
-  it("renders the suggestion correctly when no populationChange is supplied", () => {
-    const tree = renderer
-      .create(
+  it("renders the suggestion correctly when no populationChange is supplied", async () => {
+    const rendered = await renderStatefulComponent((root) => {
+      root.render(
         <PopulationChangeGraph
           prefsToShow={[
             { id: "0", name: "prefs-0" },
@@ -20,9 +20,9 @@ describe("Header component", () => {
             { id: "2", name: "prefs-2" },
           ]}
         />
-      )
-      .toJSON();
+      );
+    });
 
-    expect(tree).toMatchSnapshot();
+    expect(rendered).toMatchSnapshot();
   });
 });

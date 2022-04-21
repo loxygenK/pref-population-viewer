@@ -18,6 +18,7 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   husky: ^7.0.4
   jest: ^27.5.1
+  jest-canvas-mock: ^2.3.1
   lint-staged: ^12.3.8
   next: 12.1.5
   node-mocks-http: ^1.11.0
@@ -58,6 +59,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.13.0
   husky: 7.0.4
   jest: 27.5.1
+  jest-canvas-mock: 2.3.1
   lint-staged: 12.3.8
   node-mocks-http: 1.11.0
   prettier: 2.6.2
@@ -1615,6 +1617,10 @@ packages:
       source-map-resolve: 0.6.0
     dev: true
 
+  /cssfontparser/1.2.1:
+    resolution: {integrity: sha1-9AIvyPlwDGgCnVQghK+69CWj8+M=}
+    dev: true
+
   /cssom/0.3.8:
     resolution: {integrity: sha512-b0tGHbfegbhPJpxpiBPU2sCkigAqtM9O121le6bbOlgyV+NyGyCmVfJ6QW9eRjz8CpNfWEOYBIMIGRYkLwsIYg==}
     dev: true
@@ -2714,6 +2720,13 @@ packages:
       istanbul-lib-report: 3.0.0
     dev: true
 
+  /jest-canvas-mock/2.3.1:
+    resolution: {integrity: sha512-5FnSZPrX3Q2ZfsbYNE3wqKR3+XorN8qFzDzB5o0golWgt6EOX1+emBnpOc9IAQ+NXFj8Nzm3h7ZdE/9H0ylBcg==}
+    dependencies:
+      cssfontparser: 1.2.1
+      moo-color: 1.0.3
+    dev: true
+
   /jest-changed-files/27.5.1:
     resolution: {integrity: sha512-buBLMiByfWGCoMsLLzGUUSpAmIAGnbR2KJoMN10ziLhOLvP4e0SlypHnAel8iqQXTrcbmfEY9sSqae5sgUsTvw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -3497,6 +3510,12 @@ packages:
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
+    dev: true
+
+  /moo-color/1.0.3:
+    resolution: {integrity: sha512-i/+ZKXMDf6aqYtBhuOcej71YSlbjT3wCO/4H1j8rPvxDJEifdwgg5MaFyu6iYAT8GBZJg2z0dkgK4YMzvURALQ==}
+    dependencies:
+      color-name: 1.1.4
     dev: true
 
   /ms/2.0.0:

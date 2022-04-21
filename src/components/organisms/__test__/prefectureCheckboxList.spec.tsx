@@ -1,10 +1,12 @@
-import Home from "~/pages/index.page";
 import { renderStatefulComponent } from "~/test/renderStatefulComponent";
+import { PrefectureCheckBoxList } from "../prefectureCheckboxList";
 
-describe("index page", () => {
+describe("Header component", () => {
   it("renders correctly", async () => {
     const rendered = await renderStatefulComponent((root) => {
-      root.render(<Home />);
+      root.render(
+        <PrefectureCheckBoxList selectedPrefs={[]} onChange={() => {}} />
+      );
     });
 
     expect(rendered).toMatchSnapshot();

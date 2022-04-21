@@ -10,5 +10,9 @@ module.exports = createJestConfig({
   moduleNameMapper: {
     "^~/(.*)$": "<rootDir>/src/$1"
   },
-  globalSetup: "<rootDir>/src/test/setup.ts"
+  globalSetup: "<rootDir>/src/test/setup/loadEnv.ts",
+  setupFiles: [
+    "jest-canvas-mock",
+    "<rootDir>/src/test/setup/mock.ts"
+  ]
 });
