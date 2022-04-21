@@ -66,4 +66,38 @@ pnpm i
 8. CI が全て通過するのを待ち，Squash merge
    - base ブランチは自動的に削除されます．
 
+---
+
+## 特記事項
+
+#### プロキシサーバについて
+API トークン等を隠蔽するために，Next.js の API Routes 機能を用いて RESAS API とブラウザの間にクッションを置いています．
+
+#### `components` ディレクトリの仕分けの指標について
+
+| ディレクトリ名 | 他コンポーネントへの依存 | ドメイン依存 | ロジック (API 等) |
+| :------------- | :----------------------- | :----------- | :---------------- |
+| `atom`         | ❌                       | ❌           | ❌                |
+| `molecules`    | ⭕                       | ❌           | ❌                |
+| `organisms`    | ⭕                       | ⭕           | ⭕                |
+
+#### 非同期に状態が変わるコンポーネントのテストについて
+`~/components/organisms` の中のコンポーネントや，それを参照するページ等は，`swr` 等によって非同期に状態が変わることがあります．このようなコンポーネントは，以下のスニペットを参考にしてテストを書いてください:
+
+```jsx
+describe("<Component description>", () => {
+  it("<Test case name>", async () => {
+    const rendered = await renderStatefulComponent((root) => {
+      root.render(
+        <YourComponent />
+      );
+    });
+
+    expect(rendered).toMatchSnapshot();
+  });
+});
+```
+
+`renderStatefulComponent` 関数の引数の匿名関数内でレンダリングを行うと， 1.5 秒待機した後の状態でレンダリングされ，状態の変化が起こった後のスナップショットを取ることが出来ます．
+
 <!-- vim: set wrap: -->
