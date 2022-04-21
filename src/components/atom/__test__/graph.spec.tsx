@@ -1,33 +1,23 @@
 import renderer from "react-test-renderer";
-import { PopulationChangeGraph } from "../graph";
+import { Graph } from "../graph";
 
 describe("Header component", () => {
-  it("renders the suggestion correctly when no populationChange is supplied", () => {
-    const tree = renderer
-      .create(<PopulationChangeGraph populationChanges={[]} />)
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it("renders the suggestion correctly when no populationChange is supplied", () => {
+  it("renders correcrly", () => {
     const tree = renderer
       .create(
-        <PopulationChangeGraph
-          populationChanges={[
+        <Graph
+          dataSeries={[
             {
-              dataIndex: 0,
-              populationChange: {
-                forecastBoundary: 2010,
-                pref: { id: "0", name: "Prefecture" },
-                changes: [
-                  { year: 2000, population: 100000 },
-                  { year: 2010, population: 200000 },
-                  { year: 2020, population: 300000 },
-                ],
-              },
+              name: "Hoge",
+              data: [
+                { x: 2000, y: 100000 },
+                { x: 2010, y: 200000 },
+                { x: 2020, y: 300000 },
+              ],
             },
           ]}
+          xUnit="Xunit"
+          yUnit="Yunit"
         />
       )
       .toJSON();
