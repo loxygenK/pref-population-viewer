@@ -4,6 +4,7 @@ import { useAPIProxyClient } from "~/api/proxy/hook/useAPIProxyClient";
 import { Prefecture } from "~/domain/prefecture";
 import { ValueWithID } from "~/types/valueWithId";
 import { CheckBoxList } from "../molecules/checkboxList";
+import { AsyncDataHandler } from "../templates/asyncDataHandler";
 
 const usePrefectures = () => {
   const apiProxyClient = useAPIProxyClient();
@@ -40,16 +41,19 @@ export const PrefectureCheckBoxList: React.FC<PrefectureCheckBoxListProps> = ({
     onChange(resolvedPrefs);
   };
 
-  if (checkboxValues === undefined) {
-    // TODO: Create more fancier loading screen
-    return <div>Loading...</div>;
-  }
-
   return (
-    <CheckBoxList
-      values={checkboxValues}
-      checkedIDs={selectedPrefIDs}
-      onChange={onCheckBoxChanged}
-    />
+    <AsyncDataHandler
+      data={checkboxValues}
+      error={error}
+      skeletonProps={{ count: 5 }}
+    >
+      {(values) => (
+        <CheckBoxList
+          values={values}
+          checkedIDs={selectedPrefIDs}
+          onChange={onCheckBoxChanged}
+        />
+      )}
+    </AsyncDataHandler>
   );
 };

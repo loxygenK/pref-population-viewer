@@ -10,6 +10,7 @@ import { Prefecture } from "~/domain/prefecture";
 import { useAPIProxyClient } from "~/api/proxy/hook/useAPIProxyClient";
 import useSWR from "swr";
 import { Graph, GraphDataSeries } from "../atom/graph";
+import { AsyncDataHandler } from "../templates/asyncDataHandler";
 
 const usePopulationChanges = (prefsToShow: Prefecture[]) => {
   const apiProxyClient = useAPIProxyClient();
@@ -32,11 +33,6 @@ export const PopulationChangeGraph: React.FC<PopulationChangeGraph> = ({
     return populationChanges?.map(generateSeriesFromPopulationChanges);
   }, [populationChanges]);
 
-  if (dataSeries === undefined) {
-    // TODO: Create fancier loading screen
-    return <div>Loading...</div>;
-  }
-
   if (prefsToShow.length === 0) {
     return (
       <div className={styles.suggestion_area}>
@@ -49,7 +45,15 @@ export const PopulationChangeGraph: React.FC<PopulationChangeGraph> = ({
 
   return (
     <div className={styles.graph_area}>
-      <Graph dataSeries={dataSeries} xUnit="年度" yUnit="人口数" />
+      <AsyncDataHandler
+        data={dataSeries}
+        error={error}
+        skeletonProps={{
+          className: styles.loading_skeleton,
+        }}
+      >
+        {(series) => <Graph dataSeries={series} xUnit="年度" yUnit="人口数" />}
+      </AsyncDataHandler>
     </div>
   );
 };
