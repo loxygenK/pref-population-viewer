@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import React from "react";
-import { apiClient } from "~/api/client";
+import { apiClient } from "~/api/client/client";
 import { CheckBoxList } from "~/components/checkboxList";
 import {
   PopulationChangeGraph,

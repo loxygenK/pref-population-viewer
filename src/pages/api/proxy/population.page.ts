@@ -1,5 +1,5 @@
 import { NextApiHandler } from "next";
-import { apiClient } from "~/api/client";
+import { apiClient } from "~/api/client/client";
 import { PopulationChange } from "~/domain/polulationChange";
 import { ProxyAPIResponse } from "~/dto/proxyAPIResponse";
 
