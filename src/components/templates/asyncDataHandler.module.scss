@@ -1,0 +1,5 @@
+@use "~/styles/theme.scss";
+
+.error_heading {
+  color: theme.get-color(error);
+}
