@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import React from "react";
 import { apiClient } from "~/api/client/client";
-import { CheckBoxList } from "~/components/atom/checkboxList";
+import { CheckBoxList } from "~/components/molecules/checkboxList";
 import {
   PopulationChangeGraph,
   PopulationChangeWithIndex,
