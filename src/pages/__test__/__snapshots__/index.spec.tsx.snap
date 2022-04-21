@@ -28,67 +28,62 @@ exports[`index page renders correctly 1`] = `
           className="checkbox_list "
         >
           <li>
-            <input
-              checked={false}
-              id="check-pref-0"
-              onChange={[Function]}
-              type="checkbox"
-            />
             <label
               htmlFor="check-pref-0"
             >
+              <input
+                id="check-pref-0"
+                onChange={[Function]}
+                type="checkbox"
+              />
               Pref #0
             </label>
           </li>
           <li>
-            <input
-              checked={false}
-              id="check-pref-1"
-              onChange={[Function]}
-              type="checkbox"
-            />
             <label
               htmlFor="check-pref-1"
             >
+              <input
+                id="check-pref-1"
+                onChange={[Function]}
+                type="checkbox"
+              />
               Pref #1
             </label>
           </li>
           <li>
-            <input
-              checked={false}
-              id="check-pref-2"
-              onChange={[Function]}
-              type="checkbox"
-            />
             <label
               htmlFor="check-pref-2"
             >
+              <input
+                id="check-pref-2"
+                onChange={[Function]}
+                type="checkbox"
+              />
               Pref #2
             </label>
           </li>
           <li>
-            <input
-              checked={false}
-              id="check-pref-3"
-              onChange={[Function]}
-              type="checkbox"
-            />
             <label
               htmlFor="check-pref-3"
             >
+              <input
+                id="check-pref-3"
+                onChange={[Function]}
+                type="checkbox"
+              />
               Pref #3
             </label>
           </li>
           <li>
-            <input
-              checked={false}
-              id="check-pref-4"
-              onChange={[Function]}
-              type="checkbox"
-            />
             <label
               htmlFor="check-pref-4"
             >
+              <input
+                id="check-pref-4"
+                onChange={[Function]}
+                type="checkbox"
+              />
               Pref #4
             </label>
           </li>
