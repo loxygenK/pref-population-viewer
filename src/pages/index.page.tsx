@@ -11,42 +11,36 @@ import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import styles from "./index.page.module.scss";
 import { ValueWithID } from "~/types/valueWithId";
+import { PrefectureCheckBoxList } from "~/components/organisms/prefectureCheckboxList";
 
 interface HomeProps {
-  prefectures: Array<Prefecture>;
   populationChanges: Array<PopulationChange>;
 }
-const Home: NextPage<HomeProps> = ({ prefectures, populationChanges }) => {
-  const [enabledPrefIDs, setEnabledPrefIDs] = React.useState<string[]>([]);
+const Home: NextPage<HomeProps> = ({ populationChanges }) => {
+  const [enabledPrefs, setEnabledPrefs] = React.useState<Prefecture[]>([]);
 
-  const onCheckboxChange = (newCheckedIDs: string[]) => {
-    setEnabledPrefIDs(() => newCheckedIDs);
+  const onCheckboxChange = (newCheckedPrefs: Prefecture[]) => {
+    setEnabledPrefs(() => newCheckedPrefs);
   };
 
-  const checkboxValues: Array<ValueWithID<string>> | undefined =
-    React.useMemo(() => {
-      return prefectures?.map((p) => ({ id: p.id, value: p.name }));
-    }, [prefectures]);
-
-  const shownPopulationChanges: Array<PopulationChangeWithIndex> =
-    React.useMemo(() => {
-      return populationChanges
-        .map((p, i) => ({ dataIndex: i, populationChange: p }))
-        .filter((p) => enabledPrefIDs.includes(p.populationChange.pref.id));
-    }, [enabledPrefIDs, populationChanges]);
+  // const shownPopulationChanges: Array<PopulationChangeWithIndex> =
+  //   React.useMemo(() => {
+  //     return populationChanges
+  //       .map((p, i) => ({ dataIndex: i, populationChange: p }))
+  //       .filter((p) => enabledPrefIDs.includes(p.populationChange.pref.id));
+  //   }, [enabledPrefIDs, populationChanges]);
 
   return (
     <div className={styles.page_wrapper}>
       <article className={styles.content}>
         <Section title="都道府県" className={styles.pref_list}>
-          <CheckBoxList
-            values={checkboxValues}
-            checkedIDs={enabledPrefIDs}
+          <PrefectureCheckBoxList
+            selectedPrefs={enabledPrefs}
             onChange={onCheckboxChange}
           />
         </Section>
         <Section title="人口数" className={styles.population_graph}>
-          <PopulationChangeGraph populationChanges={shownPopulationChanges} />
+          {/* <PopulationChangeGraph populationChanges={shownPopulationChanges} /> */}
         </Section>
       </article>
       <aside className={styles.credits}>
