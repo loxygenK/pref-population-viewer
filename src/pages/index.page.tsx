@@ -34,6 +34,12 @@ const Home: NextPage<HomeProps> = ({ prefectures, populationChanges }) => {
         .map((p, i) => ({ dataIndex: i, populationChange: p }))
         .filter((p) => enabledPrefIDs.includes(p.populationChange.pref.id));
     }, [enabledPrefIDs, populationChanges]);
+  // const shownPopulationChanges: Array<PopulationChangeWithIndex> =
+  //   React.useMemo(() => {
+  //     return populationChanges
+  //       .map((p, i) => ({ dataIndex: i, populationChange: p }))
+  //       .filter((p) => enabledPrefIDs.includes(p.populationChange.pref.id));
+  //   }, [enabledPrefIDs, populationChanges]);
 
   return (
     <div className={styles.page_wrapper}>
@@ -46,7 +52,7 @@ const Home: NextPage<HomeProps> = ({ prefectures, populationChanges }) => {
           />
         </Section>
         <Section title="人口数" className={styles.population_graph}>
-          <PopulationChangeGraph populationChanges={shownPopulationChanges} />
+          {/* <PopulationChangeGraph populationChanges={shownPopulationChanges} /> */}
         </Section>
       </article>
       <aside className={styles.credits}>
