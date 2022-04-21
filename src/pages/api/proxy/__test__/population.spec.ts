@@ -34,9 +34,8 @@ describe("Population change proxy page", () => {
 
     await handler(req, res);
 
-    const jsonResponse: ProxyAPIResponse<
-      Array<PopulationChangeWithPrefectureID>
-    > = res._getJSONData();
+    const jsonResponse: ProxyAPIResponse<Array<PopulationChange>> =
+      res._getJSONData();
 
     expect(res.statusCode).toBe(400);
     expect(jsonResponse.status).toBe("invalid_request");
