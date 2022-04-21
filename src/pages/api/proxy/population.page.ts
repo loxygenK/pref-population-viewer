@@ -1,19 +1,17 @@
 import { NextApiHandler } from "next";
 import { apiClient } from "~/api/client";
-import { PopulationChangeWithPrefectureID } from "~/domain/polulationChange";
+import { PopulationChange } from "~/domain/polulationChange";
 import { ProxyAPIResponse } from "~/dto/proxyAPIResponse";
 
 const handler: NextApiHandler<
-  ProxyAPIResponse<Array<PopulationChangeWithPrefectureID>>
+  ProxyAPIResponse<Array<PopulationChange>>
 > = async (req, res) => {
   const prefIDsQuery: string | string[] | undefined = req.query.prefIDs;
   if (prefIDsQuery === undefined) {
-    res
-      .status(400)
-      .json({
-        status: "invalid_request",
-        message: "`prefIDs` query must be set",
-      });
+    res.status(400).json({
+      status: "invalid_request",
+      message: "`prefIDs` query must be set",
+    });
     return;
   }
 
@@ -26,12 +24,10 @@ const handler: NextApiHandler<
     const selectedPrefs = prefs.filter((p) => prefIDs.includes(p.id));
 
     if (selectedPrefs.length !== prefIDs.length) {
-      res
-        .status(404)
-        .json({
-          status: "invalid_request",
-          message: "Some prefectures was not found",
-        });
+      res.status(404).json({
+        status: "invalid_request",
+        message: "Some prefectures was not found",
+      });
       return;
     }
 
