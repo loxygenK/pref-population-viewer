@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import httpMocks from "node-mocks-http";
-import { json } from "stream/consumers";
 import { Prefecture } from "~/domain/prefecture";
 import { ProxyAPIResponse } from "~/dto/proxyAPIResponse";
 import handler from "../pref.page";
