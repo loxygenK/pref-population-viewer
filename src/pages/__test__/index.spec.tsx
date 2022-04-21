@@ -1,18 +1,12 @@
-import { createRoot } from "react-dom/client";
-import { act } from "react-test-renderer";
 import Home from "~/pages/index.page";
-import { testUnpureComponent } from "~/test/testUnpureComponent";
+import { renderStatefulComponent } from "~/test/renderStatefulComponent";
 
 describe("index page", () => {
   it("renders correctly", async () => {
-    await testUnpureComponent(async (_, container) => {
-      await act(async () => {
-        createRoot(container).render(<Home />);
-
-        await new Promise((res) => setTimeout(res, 1500));
-      });
-
-      expect(container.innerHTML).toMatchSnapshot();
+    const rendered = await renderStatefulComponent((root) => {
+      root.render(<Home />);
     });
+
+    expect(rendered).toMatchSnapshot();
   });
 });
