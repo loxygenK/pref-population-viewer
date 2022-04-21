@@ -1,17 +1,12 @@
 import type { NextPage } from "next";
 import React from "react";
-import { apiClient } from "~/api/client/client";
 import { Section } from "~/components/atom/section";
-import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import styles from "./index.page.module.scss";
 import { PrefectureCheckBoxList } from "~/components/organisms/prefectureCheckboxList";
 import { PopulationChangeGraph } from "~/components/organisms/populationChangeGraph";
 
-interface HomeProps {
-  populationChanges: Array<PopulationChange>;
-}
-const Home: NextPage<HomeProps> = ({ populationChanges }) => {
+const Home: NextPage = () => {
   const [enabledPrefs, setEnabledPrefs] = React.useState<Prefecture[]>([]);
 
   const onCheckboxChange = (newCheckedPrefs: Prefecture[]) => {
@@ -37,20 +32,4 @@ const Home: NextPage<HomeProps> = ({ populationChanges }) => {
     </div>
   );
 };
-
-export const getStaticProps = async () => {
-  const prefectures = await apiClient.pref.fetchPrefectures();
-  const populationChanges = await apiClient.population.fetchPopulationChange(
-    prefectures
-  );
-
-  return {
-    props: {
-      prefectures,
-      populationChanges,
-    },
-    revalidate: 60 * 60 * 24 * 30,
-  };
-};
-
 export default Home;
