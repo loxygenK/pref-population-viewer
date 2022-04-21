@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import React from "react";
 import { apiClient } from "~/api/client/client";
-import { CheckBoxList } from "~/components/checkboxList";
+import { CheckBoxList } from "~/components/atom/checkboxList";
 import {
   PopulationChangeGraph,
   PopulationChangeWithIndex,
-} from "~/components/graph";
-import { Section } from "~/components/section";
+} from "~/components/atom/graph";
+import { Section } from "~/components/atom/section";
 import { PopulationChange } from "~/domain/polulationChange";
 import { Prefecture } from "~/domain/prefecture";
 import styles from "./index.page.module.scss";
