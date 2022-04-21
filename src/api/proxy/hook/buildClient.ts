@@ -3,7 +3,7 @@ import { buildExternalProxyClient } from "../actual/buildClient";
 import { buildMockProxyClient } from "../mock/buildClient";
 import { APIProxyClientSet } from "../types";
 
-export const buildClient = (): APIProxyClientSet => {
+export const buildProxyClient = (): APIProxyClientSet => {
   const mode = getEnvironmentVariable("PROXY_MODE");
 
   if (mode === "dev") {
