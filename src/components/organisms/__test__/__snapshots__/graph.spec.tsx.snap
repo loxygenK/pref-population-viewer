@@ -1,32 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header component renders the suggestion correctly when no populationChange is supplied 1`] = `
-<div
-  className="suggestion_area"
->
-  <span
-    className="suggestion_text"
-  >
-    都道府県リストから表示する都道府県を選択してください
-  </span>
-</div>
-`;
+exports[`Header component renders the suggestion correctly when no populationChange is supplied 1`] = `"<div class=\\"suggestion_area\\"><span class=\\"suggestion_text\\">都道府県リストから表示する都道府県を選択してください</span></div>"`;
 
-exports[`Header component renders the suggestion correctly when no populationChange is supplied 2`] = `
-<div
-  className="graph_area"
->
-  <span
-    aria-busy={true}
-    aria-live="polite"
-  >
-    <span
-      className="react-loading-skeleton loading_skeleton"
-      style={Object {}}
-    >
-      ‌
-    </span>
-    <br />
-  </span>
-</div>
-`;
+exports[`Header component renders the suggestion correctly when no populationChange is supplied 2`] = `"<div class=\\"graph_area\\"><canvas role=\\"img\\" height=\\"0\\" width=\\"0\\" style=\\"display: block; box-sizing: border-box; height: 0px; width: 0px;\\"></canvas></div>"`;
