@@ -1,11 +1,13 @@
-import { getEnvironmentVariable } from "~/util/getEnvironmentVariable";
 import { APIProxyClientSet } from "../types";
 import { ExternalPopulationChangeAPIProxy } from "./population";
 import { ExternalPrefectureAPIProxy } from "./pref";
 import { ProxyRequestConfig } from "./types";
 
 export const buildExternalProxyClient = (): APIProxyClientSet => {
-  const apiOrigin = getEnvironmentVariable("NEXT_PUBLIC_API_ORIGIN");
+  const apiOrigin = process.env.NEXT_PUBLIC_API_ORIGIN;
+  if (apiOrigin === undefined) {
+    throw new Error("NEXT_PUBLIC_API_ORIGIN must be set");
+  }
   const config: ProxyRequestConfig = {
     origin: apiOrigin,
   };

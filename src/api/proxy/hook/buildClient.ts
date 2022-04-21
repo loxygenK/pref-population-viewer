@@ -1,10 +1,9 @@
-import { getEnvironmentVariable } from "~/util/getEnvironmentVariable";
 import { buildExternalProxyClient } from "../actual/buildClient";
 import { buildMockProxyClient } from "../mock/buildClient";
 import { APIProxyClientSet } from "../types";
 
 export const buildProxyClient = (): APIProxyClientSet => {
-  const mode = getEnvironmentVariable("PROXY_MODE");
+  const mode = process.env.NEXT_PUBLIC_PROXY_MODE;
 
   if (mode === "dev") {
     return buildMockProxyClient();
