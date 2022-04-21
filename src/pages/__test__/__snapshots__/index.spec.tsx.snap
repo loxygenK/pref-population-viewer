@@ -15,79 +15,8 @@ exports[`index page renders correctly 1`] = `
       >
         都道府県
       </h2>
-      <div
-        className="checkbox_list_wrapper"
-      >
-        <button
-          className="toggle_button pressed show_toggle_button"
-          onClick={[Function]}
-        >
-          折りたたむ
-        </button>
-        <ul
-          className="checkbox_list "
-        >
-          <li>
-            <label
-              htmlFor="check-pref-0"
-            >
-              <input
-                id="check-pref-0"
-                onChange={[Function]}
-                type="checkbox"
-              />
-              Pref #0
-            </label>
-          </li>
-          <li>
-            <label
-              htmlFor="check-pref-1"
-            >
-              <input
-                id="check-pref-1"
-                onChange={[Function]}
-                type="checkbox"
-              />
-              Pref #1
-            </label>
-          </li>
-          <li>
-            <label
-              htmlFor="check-pref-2"
-            >
-              <input
-                id="check-pref-2"
-                onChange={[Function]}
-                type="checkbox"
-              />
-              Pref #2
-            </label>
-          </li>
-          <li>
-            <label
-              htmlFor="check-pref-3"
-            >
-              <input
-                id="check-pref-3"
-                onChange={[Function]}
-                type="checkbox"
-              />
-              Pref #3
-            </label>
-          </li>
-          <li>
-            <label
-              htmlFor="check-pref-4"
-            >
-              <input
-                id="check-pref-4"
-                onChange={[Function]}
-                type="checkbox"
-              />
-              Pref #4
-            </label>
-          </li>
-        </ul>
+      <div>
+        Loading...
       </div>
     </section>
     <section
@@ -98,15 +27,6 @@ exports[`index page renders correctly 1`] = `
       >
         人口数
       </h2>
-      <div
-        className="suggestion_area"
-      >
-        <span
-          className="suggestion_text"
-        >
-          都道府県リストから表示する都道府県を選択してください
-        </span>
-      </div>
     </section>
   </article>
   <aside
