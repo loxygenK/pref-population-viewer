@@ -15,9 +15,46 @@ exports[`index page renders correctly 1`] = `
       >
         都道府県
       </h2>
-      <div>
-        Loading...
-      </div>
+      <span
+        aria-busy={true}
+        aria-live="polite"
+      >
+        <span
+          className="react-loading-skeleton"
+          style={Object {}}
+        >
+          ‌
+        </span>
+        <br />
+        <span
+          className="react-loading-skeleton"
+          style={Object {}}
+        >
+          ‌
+        </span>
+        <br />
+        <span
+          className="react-loading-skeleton"
+          style={Object {}}
+        >
+          ‌
+        </span>
+        <br />
+        <span
+          className="react-loading-skeleton"
+          style={Object {}}
+        >
+          ‌
+        </span>
+        <br />
+        <span
+          className="react-loading-skeleton"
+          style={Object {}}
+        >
+          ‌
+        </span>
+        <br />
+      </span>
     </section>
     <section
       className="population_graph"
@@ -27,8 +64,14 @@ exports[`index page renders correctly 1`] = `
       >
         人口数
       </h2>
-      <div>
-        Loading...
+      <div
+        className="suggestion_area"
+      >
+        <span
+          className="suggestion_text"
+        >
+          都道府県リストから表示する都道府県を選択してください
+        </span>
       </div>
     </section>
   </article>
