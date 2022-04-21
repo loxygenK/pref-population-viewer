@@ -44,10 +44,10 @@ const buildGraphConfiguration = (dataSeries: Array<GraphDataSeries>) => {
 
   const data = {
     labels: dataSeries[0].data.map((d) => d.x),
-    datasets: dataSeries.map((s) => ({
+    datasets: dataSeries.map((s, i) => ({
       label: s.name,
-      backgroundColor: generateColor(s.dataIndex),
-      borderColor: generateColor(s.dataIndex),
+      backgroundColor: generateColor(i),
+      borderColor: generateColor(i),
       data: s.data.map((d) => d.y),
     })),
   };
