@@ -36,11 +36,13 @@ pnpm i
 - `.env.local` に書かれた内容は Jest でも読み込まれます．
 - `.env.ci` は CI 実行時に `.env.local` にコピーされます．
 
-| 名前               | 内容                         | 取りうる値    |
-| :----------------- | :--------------------------  | :------------ |
-| `API_MODE`         | API にモックを使うかどうか． | `dev`, `prod` |
-| `RESAS_API_KEY`    | RESAS API の API キー．      | ー            |
-| `RESAS_API_ORIGIN` | API S API の オリジン．      | ー            |
+| 名前                     | 内容                                   | 取りうる値                                            |
+| :----------------------- | :------------------------------------- | :---------------------------------------------------- |
+| `API_MODE`               | API にモックを使うかどうか．           | `dev`, `prod`                                         |
+| `NEXT_PUBLIC_PROXY_MODE` | プロキシサーバにモックを使うかどうか． | `dev`, `prod`                                         |
+| `NEXT_PUBLIC_API_ORIGIN` | プロキシサーバのオリジン．             | 原則 `http://localhost:3000` など，ページと同じです． |
+| `RESAS_API_KEY`          | RESAS API の API キー．                | ー                                                    |
+| `RESAS_API_ORIGIN`       | RESAS API の オリジン．                | ー                                                    |
 
 ### フック
 #### `pnpm i` 後など (`prepare`)
