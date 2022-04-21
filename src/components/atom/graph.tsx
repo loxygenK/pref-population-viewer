@@ -39,7 +39,7 @@ export const Graph: React.FC<GraphProps> = ({ dataSeries, xUnit, yUnit }) => {
 
 const buildGraphConfiguration = (dataSeries: Array<GraphDataSeries>) => {
   if (dataSeries.length === 0) {
-    return undefined;
+    throw new Error("At lease one series must be provided.");
   }
 
   const data = {
