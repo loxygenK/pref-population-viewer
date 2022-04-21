@@ -24,16 +24,6 @@ export const Graph: React.FC<GraphProps> = ({ dataSeries, xUnit, yUnit }) => {
     () => buildGraphConfiguration(dataSeries),
     [dataSeries]
   );
-  if (config === undefined) {
-    return (
-      <div className={styles.suggestion_area}>
-        <span className={styles.suggestion_text}>
-          都道府県リストから表示する都道府県を選択してください
-        </span>
-      </div>
-    );
-  }
-
   return (
     <Chart
       type="line"
