@@ -30,6 +30,4 @@ jobs:
           version: 6.32
           run_install: true
 
-      - run: cp .env.ci .env.local
-
       - run: pnpm ${{ matrix.command }}
