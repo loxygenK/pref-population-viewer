@@ -1,5 +1,5 @@
 import { getEnvironmentVariable } from "~/util/getEnvironmentVariable";
-import { APIClient } from "../type";
+import { APIClient } from "../types";
 import { RESASPopulationChangeAPI } from "../resas/population";
 import { RESASPrefectureAPI } from "../resas/pref";
 import { RESASRequestConfig } from "../resas/types";

@@ -1,4 +1,4 @@
-import { APIClient } from "../type";
+import { APIClient } from "../types";
 import { MockPopulationChangeAPI } from "../mock/population";
 import { MockPrefectureAPI } from "../mock/pref";
 
