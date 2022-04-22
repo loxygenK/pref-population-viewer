@@ -1,5 +1,5 @@
 import { getEnvironmentVariable } from "~/util/getEnvironmentVariable";
-import { APIClient } from "./type";
+import { APIClient } from "./types";
 import { buildMockClient } from "./mock/buildClient";
 import { buildRESASClient } from "./resas/buildClient";
 
